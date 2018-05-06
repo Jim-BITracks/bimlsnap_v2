@@ -1,6 +1,6 @@
 # bimlsnap_v2 - Getting Started
 ## Install BimlSnap v2 Solution (under the "BimlSnap Build" Folder)
-1. Contact us at info@bitracks.com get your evaluation 'bimlsnap_v2' (Azure SQL Database) set-up
+1. Open and run the 'bimlsnap_v2' database (DDL script) in SQL Server Management Studio (SSMS). This is the primary BimlSnap database, and it holds all Project/Package/Connection/Etc. configurations, as well as the stored procedures and functions used to build the corresponding BIML output
 2. Unzip the file "BimlSnapDesktop.zip". This is the 'primary' front-end program, and is also copy-protected. A free 15 day evaluation period is granted upon first use (note: BimlSnap_v2 can still be used without this front-end application by working directly with SQL Server back-end database commands)
 3. Open the application file: "BimlSnap Desktop v2.exe" and connect to the "bimlsnap_v2" database created in step 1
 4. Open and run the SSIS_Data database (DDL script) in SQL Server Management Studio (SSMS). This is used to support the BimlSnap runtime framework options, and extends the standard SSISDB runtime database
