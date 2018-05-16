@@ -12092,6 +12092,7 @@ GO
 -- ================================================================================================
 -- Author:		Maja Kozar (Software Developer)
 -- Create date: 04 Oct 2017
+-- Modify date: 10 May 2018 - Update PK change - update package name for all project (MK)
 -- Modify date: 
 -- Description:	Update Data Flow package
 --
@@ -12183,7 +12184,7 @@ BEGIN
 		--update project_package table
 		UPDATE [biml].[project_package]
 		SET	[package_name] = @package_name
-		WHERE [project_id] = @project_id AND [package_name] = @old_package_name
+		WHERE [package_name] = @old_package_name
 
 		--delete old row from package table
 		DELETE FROM [biml].[package]
@@ -12200,6 +12201,7 @@ GO
 -- ================================================================================================
 -- Author:		Maja Kozar (Software Developer)
 -- Create date: 19 Oct 2017
+-- Modify date: 10 May 2018 - Update PK change - update package name for all project (MK)
 -- Modify date: 
 -- Description:	Update Execute Process package
 --
@@ -12266,7 +12268,7 @@ BEGIN
 			--update project_package table
 			UPDATE [biml].[project_package]
 			SET	[package_name] = @package_name
-			WHERE [project_id] = @project_id AND [package_name] = @old_package_name
+			WHERE [package_name] = @old_package_name
 
 			--delete old row from package table
 			DELETE FROM [biml].[package]
@@ -12302,6 +12304,7 @@ GO
 -- ================================================================================================
 -- Author:		Ena Jukic (Software Developer)
 -- Create date: 17 Oct 2017
+-- Modify date: 10 May 2018 - Update PK change - update package name for all project (MK)
 -- Modify date: 
 -- Description:	Insert or Update Primary Key Execute Script Package
 --
@@ -12363,7 +12366,7 @@ BEGIN
 			--update project_package table
 			UPDATE [biml].[project_package]
 			SET	[package_name] = @package_name
-			WHERE [project_id] = @project_id AND [package_name] = @old_package_name
+			WHERE [package_name] = @old_package_name
 
 			--delete old row from package table
 			DELETE FROM [biml].[package]
@@ -12388,6 +12391,7 @@ GO
 -- ================================================================================================
 -- Author:		Maja Kozar (Software Developer)
 -- Create date: 11 Oct 2017
+-- Modify date: 10 May 2018 - Update PK change - update package name for all project (MK)
 -- Modify date: 
 -- Description:	Update Execute SQL package
 --
@@ -12454,7 +12458,7 @@ BEGIN
 			--update project_package table
 			UPDATE [biml].[project_package]
 			SET	[package_name] = @package_name
-			WHERE [project_id] = @project_id AND [package_name] = @old_package_name
+			WHERE [package_name] = @old_package_name
 
 			--delete old row from package table
 			DELETE FROM [biml].[package]
@@ -12504,6 +12508,7 @@ GO
 -- ================================================================================================
 -- Author:		Ena Jukic (Software Developer)
 -- Create date: 17 Oct 2017
+-- Modify date: 10 May 2018 - Update PK change - update package name for all project (MK)
 -- Modify date: 
 -- Description:	Insert or Update Primary Key Foreach Data Flow Package
 --
@@ -12610,7 +12615,7 @@ BEGIN
 		--update project_package table
 		UPDATE [biml].[project_package]
 		SET	[package_name] = @package_name
-		WHERE [project_id] = @project_id AND [package_name] = @old_package_name
+		WHERE [package_name] = @old_package_name
 
 		--delete old row from package table
 		DELETE FROM [biml].[package]
@@ -12627,6 +12632,7 @@ GO
 -- ================================================================================================
 -- Author:		Maja Kozar (Software Developer)
 -- Create date: 17 Oct 2017
+-- Modify date: 10 May 2018 - Update PK change - update package name for all project (MK)
 -- Modify date: 
 -- Description:	Insert or Update Primary Key Foreach Execute SQL Package
 --
@@ -12711,7 +12717,7 @@ BEGIN
 			--update project_package table
 			UPDATE [biml].[project_package]
 			SET	[package_name] = @package_name
-			WHERE [project_id] = @project_id AND [package_name] = @old_package_name
+			WHERE [package_name] = @old_package_name
 
 			--delete old row from package table
 			DELETE FROM [biml].[package]
