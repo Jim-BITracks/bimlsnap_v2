@@ -11570,6 +11570,7 @@ GO
 -- ================================================================================================
 -- Author:		Ena Jukic (Software Developer)
 -- Create date: 29 Sep 2017
+-- Modify date: 18 May 2018 - fix where statement since insert is not working as expected (MK)
 -- Modify date: 
 -- Description:	Insert or Update Environment Parameter
 --
@@ -11588,12 +11589,12 @@ CREATE PROCEDURE [biml].[Insert or Update Environment Parameter]
 AS 
 BEGIN
 
-IF ((SELECT COUNT([environment_name]) FROM [biml].[environment_parameter] WHERE [environment_name] = @environment_name) > 0)
+IF ((SELECT COUNT([environment_name]) FROM [biml].[environment_parameter] WHERE [environment_name] = @environment_name AND [parameter_name] = @parameter_name) > 0)
 	BEGIN
 	UPDATE [biml].[environment_parameter]
 	SET 
 		[parameter_value] = @parameter_value
-	WHERE [environment_name] = @environment_name
+	WHERE [environment_name] = @environment_name AND [parameter_name] = @parameter_name
 	END
 ELSE
 	BEGIN
