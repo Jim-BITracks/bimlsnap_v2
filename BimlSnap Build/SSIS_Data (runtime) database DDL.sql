@@ -36,8 +36,6 @@ GO
 /****** Object:  Database [SSIS_Data]    Script Date: 4/28/2018 5:04:01 PM ******/
 CREATE DATABASE [SSIS_Data];
 GO
-ALTER DATABASE [SSIS_Data] SET COMPATIBILITY_LEVEL = 140
-GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
 EXEC [SSIS_Data].[dbo].[sp_fulltext_database] @action = 'enable'
