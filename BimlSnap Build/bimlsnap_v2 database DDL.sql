@@ -35,8 +35,6 @@ GO
 /****** Object:  Database [bimlsnap_v2]    Script Date: 5/3/2018 8:48:49 AM ******/
 CREATE DATABASE [bimlsnap_v2];
 GO
-ALTER DATABASE [bimlsnap_v2] SET COMPATIBILITY_LEVEL = 140
-GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
 EXEC [bimlsnap_v2].[dbo].[sp_fulltext_database] @action = 'enable'
