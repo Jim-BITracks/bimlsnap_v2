@@ -34,8 +34,6 @@ USE [master]
 GO
 CREATE DATABASE [bimlsnap_mart_v2];
 GO
-ALTER DATABASE [bimlsnap_mart_v2] SET COMPATIBILITY_LEVEL = 140
-GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
 begin
 EXEC [bimlsnap_mart_v2].[dbo].[sp_fulltext_database] @action = 'enable'
