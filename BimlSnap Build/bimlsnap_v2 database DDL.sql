@@ -12508,6 +12508,7 @@ GO
 -- Author:		Ena Jukic (Software Developer)
 -- Create date: 17 Oct 2017
 -- Modify date: 10 May 2018 - Update PK change - update package name for all project (MK)
+-- Modify date:  30 May 2018 - Fix source query direct character length (MK)
 -- Modify date: 
 -- Description:	Insert or Update Primary Key Foreach Data Flow Package
 --
@@ -12524,10 +12525,10 @@ CREATE PROCEDURE [biml].[Primary Key Update (Foreach Data Flow)]
 	@foreach_item_datatype nvarchar(64),
 	@foreach_item_build_value nvarchar(64),
 	@src_query nvarchar(max),
-	@src_query_direct nvarchar(64),
-    @package_qualifier nvarchar(64),
-    @dst_connection nvarchar(64),
-    @dst_schema nvarchar(128),
+	@src_query_direct nvarchar(max),
+    	@package_qualifier nvarchar(64),
+    	@dst_connection nvarchar(64),
+    	@dst_schema nvarchar(128),
 	@dst_table nvarchar(128),
 	@dst_truncate nvarchar(1),
 	@keep_identity nvarchar(1),
