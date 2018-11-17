@@ -30,30 +30,36 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-USE [master]
+USE [master];
 GO
 
-CREATE DATABASE [bimlsnap_v2]
+CREATE DATABASE [bimlsnap_v2];
 GO
 
 USE [bimlsnap_v2]
 GO
-/****** Object:  Schema [biml]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Schema [biml]    Script Date: 11/17/2018 3:39:59 PM ******/
 CREATE SCHEMA [biml]
 GO
-/****** Object:  Schema [etl]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Schema [edge]    Script Date: 11/17/2018 3:39:59 PM ******/
+CREATE SCHEMA [edge]
+GO
+/****** Object:  Schema [etl]    Script Date: 11/17/2018 3:39:59 PM ******/
 CREATE SCHEMA [etl]
 GO
-/****** Object:  Schema [html]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Schema [html]    Script Date: 11/17/2018 3:39:59 PM ******/
 CREATE SCHEMA [html]
 GO
-/****** Object:  Schema [jtts]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Schema [jtts]    Script Date: 11/17/2018 3:39:59 PM ******/
 CREATE SCHEMA [jtts]
 GO
-/****** Object:  Schema [stg]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Schema [node]    Script Date: 11/17/2018 3:39:59 PM ******/
+CREATE SCHEMA [node]
+GO
+/****** Object:  Schema [stg]    Script Date: 11/17/2018 3:39:59 PM ******/
 CREATE SCHEMA [stg]
 GO
-/****** Object:  UserDefinedFunction [biml].[Adonet Connect String]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Adonet Connect String]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -100,7 +106,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Adonet Provider]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Adonet Provider]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -149,7 +155,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard snowflake)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard snowflake)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -564,7 +570,7 @@ RETURN  @MergeStatement
 
 END
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard snowflake) Type 1 - Base Columns]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard snowflake) Type 1 - Base Columns]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -934,7 +940,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1374,7 +1380,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard) Type 1 - Base Columns]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Dim Merge (Standard) Type 1 - Base Columns]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1742,7 +1748,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Fact Merge (Basic)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Fact Merge (Basic)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1866,7 +1872,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Fact Partition (Standard)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Fact Partition (Standard)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2118,7 +2124,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Fact Switch (Standard)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Fact Switch (Standard)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2326,7 +2332,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Fact Switch (Standard) jic]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Fact Switch (Standard) jic]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2561,7 +2567,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Select Statement]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Select Statement]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2763,7 +2769,7 @@ RETURN  @select_statement
 END
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Build Select Statement (Direct)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Build Select Statement (Direct)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2924,7 +2930,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Data Connect String]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Data Connect String]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3019,7 +3025,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Flatfile FileFormat]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Flatfile FileFormat]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3067,7 +3073,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Flatfile FilePath]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Flatfile FilePath]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3116,7 +3122,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get user id]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[get user id]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3164,7 +3170,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get user name]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[get user name]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3198,7 +3204,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get version]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[get version]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3240,7 +3246,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[is connection name used not adonet]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[is connection name used not adonet]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3288,7 +3294,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[is connection name used not flatfile]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[is connection name used not flatfile]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3338,7 +3344,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[is connection name used not oledb]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[is connection name used not oledb]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3386,7 +3392,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[is connection name used not smtp]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[is connection name used not smtp]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3437,7 +3443,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Group No Alerts)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Group No Alerts)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3508,7 +3514,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Group No Framework)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Group No Framework)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3564,7 +3570,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Group)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Group)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3634,7 +3640,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Run All No Alerts)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Run All No Alerts)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3710,7 +3716,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Run All No Framework)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Run All No Framework)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3766,7 +3772,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Run All)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Run All)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3863,7 +3869,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Standard No Alerts)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Standard No Alerts)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -3971,7 +3977,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Standard No Framework)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Standard No Framework)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4025,7 +4031,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Package Template (Standard)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Package Template (Standard)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4137,7 +4143,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[Smtp Connect String]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [biml].[Smtp Connect String]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4189,7 +4195,7 @@ END
 
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[DistinctHeader]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [dbo].[DistinctHeader]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4281,7 +4287,7 @@ BEGIN
 END
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[Table DDL from CSV Header]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  UserDefinedFunction [dbo].[Table DDL from CSV Header]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4329,279 +4335,41 @@ END
 
 
 GO
-/****** Object:  Table [dbo].[dim_table]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Table [biml].[package]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[dim_table](
-	[table_sk] [int] IDENTITY(1,1) NOT NULL,
-	[server_name] [nvarchar](128) NOT NULL,
-	[database_name] [nvarchar](128) NOT NULL,
-	[table_schema] [nvarchar](128) NOT NULL,
-	[table_name] [nvarchar](128) NOT NULL,
-	[table_type] [nvarchar](32) NOT NULL,
-	[has_identity] [nvarchar](1) NOT NULL,
-	[has_primary_key] [nvarchar](1) NOT NULL,
-	[row_data_source] [nvarchar](16) NOT NULL,
-	[row_is_current] [nchar](1) NOT NULL,
-	[row_effective_date] [date] NOT NULL,
-	[row_expiration_date] [date] NOT NULL,
-	[row_insert_date] [date] NOT NULL,
-	[row_update_date] [date] NOT NULL,
- CONSTRAINT [PK dbo dim_table] PRIMARY KEY NONCLUSTERED 
+CREATE TABLE [biml].[package](
+	[package_name] [nvarchar](128) NOT NULL,
+	[pattern_name] [nvarchar](32) NOT NULL,
+	[package_text] [nvarchar](max) NOT NULL,
+	[package_xml] [xml] NOT NULL,
+	[build_datetime] [smalldatetime] NOT NULL,
+	[build_template] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK_package] PRIMARY KEY CLUSTERED 
 (
-	[table_sk] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [etl].[dim_table]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [etl].[dim_table](
-	[server_name] [nvarchar](128) NOT NULL,
-	[database_name] [nvarchar](128) NOT NULL,
-	[table_schema] [nvarchar](128) NOT NULL,
-	[table_name] [nvarchar](128) NOT NULL,
-	[table_type] [nvarchar](32) NOT NULL,
-	[has_identity] [nvarchar](1) NOT NULL,
-	[has_primary_key] [nvarchar](1) NOT NULL,
-	[enable_change_tracking] [nvarchar](1) NOT NULL,
- CONSTRAINT [PK_etl_dim_table] PRIMARY KEY CLUSTERED 
-(
-	[server_name] ASC,
-	[database_name] ASC,
-	[table_schema] ASC,
-	[table_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  UserDefinedFunction [dbo].[get all table changes by dates]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
--- ================================================================================================
--- Author:    Jim Miller (BITracks Consulting, LLC)
--- Create date: 10 Dec 2016
--- Modified by: Ena Jukic (Software developer)
--- Modify date: 06 March 2018
--- Description: Get all metadata table changes by date
---
--- sample exec:
-/*
-SELECT * FROM [dbo].[get all table changes by dates] ('06/18/2017')
-*/
--- ================================================================================================
-CREATE FUNCTION [dbo].[get all table changes by dates] (@date smalldatetime)   
-RETURNS TABLE  
-AS  
-RETURN   
-(  
-	SELECT 'Added' AS [event]
-	   , d.*
-	  FROM [dbo].[dim_table] d
-	  JOIN [etl].[dim_table] e
-		ON e.[database_name] = d.[database_name]
-	   AND e.[table_schema]  = d.[table_schema]
-	   AND e.[table_name]    = d.[table_name]
-	 WHERE d.[row_insert_date] = d.[row_update_date] 
-	   AND (d.[row_update_date] = @date or d.[row_insert_date] = @date)
-
-	UNION
-    
-	SELECT 'Changed' AS [event]
-	   , d.*
-	  FROM [dbo].[dim_table] d
-	  JOIN [etl].[dim_table] e
-		ON e.[database_name] = d.[database_name]
-	   AND e.[table_schema]  = d.[table_schema]
-	   AND e.[table_name]    = d.[table_name]
-	 WHERE d.[row_insert_date] <> d.[row_update_date]
-	   AND (d.[row_update_date] = @date or d.[row_insert_date] = @date)
-    
-	UNION
-
-	SELECT 'Deleted' AS [event]
-	   , d.*
-	  FROM [dbo].[dim_table] d
-	  LEFT JOIN [etl].[dim_table] e
-		ON e.[database_name] = d.[database_name]
-	   AND e.[table_schema]  = d.[table_schema]
-	   AND e.[table_name]    = d.[table_name]
-	 WHERE e.[database_name] IS NULL 
-	   AND (d.[row_insert_date] = @date or d.[row_update_date] = @date)
-);
-GO
-/****** Object:  Table [biml].[package_config (Data Flow)]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[package_config (Data Flow)](
-	[src_connection] [nvarchar](64) NOT NULL,
-	[src_query] [nvarchar](max) NOT NULL,
-	[is_expression] [nvarchar](1) NOT NULL,
-	[src_query_direct] [nvarchar](max) NULL,
-	[package_qualifier] [nvarchar](64) NOT NULL,
-	[dst_connection] [nvarchar](64) NOT NULL,
-	[dst_schema] [nvarchar](128) NOT NULL,
-	[dst_table] [nvarchar](128) NOT NULL,
-	[dst_truncate] [nvarchar](1) NOT NULL,
-	[keep_identity] [nvarchar](1) NOT NULL,
-	[package_name]  AS (('Data Flow - '+[package_qualifier])+case when [dst_table]='' then '' else ((' - '+[dst_schema])+'.')+[dst_table] end),
- CONSTRAINT [PK_package_config (Data Flow)] PRIMARY KEY CLUSTERED 
-(
-	[package_qualifier] ASC,
-	[dst_schema] ASC,
-	[dst_table] ASC
+	[package_name] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (Execute SQL)]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Table [biml].[pattern]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [biml].[package_config (Execute SQL)](
-	[connection_manager] [nvarchar](64) NOT NULL,
-	[package_qualifier] [nvarchar](64) NOT NULL,
-	[query] [nvarchar](max) NOT NULL,
-	[is_expression] [nvarchar](1) NOT NULL,
-	[return_row_count] [nvarchar](1) NOT NULL,
-	[package_name]  AS ('Execute SQL - '+[package_qualifier]),
- CONSTRAINT [PK_package_config (Execute SQL)] PRIMARY KEY CLUSTERED 
+CREATE TABLE [biml].[pattern](
+	[pattern_name] [nvarchar](32) NOT NULL,
+	[has_config_table] [nvarchar](1) NOT NULL,
+	[author_id] [int] NOT NULL,
+	[description] [nvarchar](4000) NULL,
+ CONSTRAINT [PK_pattern] PRIMARY KEY CLUSTERED 
 (
-	[package_qualifier] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  View [biml].[vw_package_query]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-
-
-
-CREATE VIEW [biml].[vw_package_query] AS
-
-	SELECT [package_name] AS [Package]
-		 , 'Source: ' + [src_connection] + ' - Destination: ' + [dst_connection]  + ' - Table: [' + [dst_schema] + '].[' + [dst_table] + ']' AS [Connection]
-		 , [src_query] AS [Query]
-	  FROM [biml].[package_config (Data Flow)]
-
-UNION ALL
-
-	SELECT [package_name] AS [Package]
-		 , 'Execute on Connection: ' + [connection_manager]  AS [Connection]
-		  ,[query] AS [Query]
-	  FROM [biml].[package_config (Execute SQL)]
-
-
-
-
-GO
-/****** Object:  Table [biml].[connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[connection](
-	[connection_name] [nvarchar](64) NOT NULL,
-	[server_name] [nvarchar](128) NOT NULL,
-	[database_name] [nvarchar](128) NOT NULL,
-	[provider] [nvarchar](64) NOT NULL,
-	[custom_connect_string] [nvarchar](1024) NOT NULL,
-	[connection_expression]  AS (case when rtrim([custom_connect_string])='' then ((((('"Data Source=" + @[$Project::'+[connection_name])+'_Server] + ";Initial Catalog=" + @[$Project::')+[connection_name])+'_Database] + ";Provider=" + @[$Project::')+[connection_name])+'_Provider]  + ";Integrated Security=SSPI;Auto Translate=False;"' else ('@[$Project::'+[connection_name])+'_ConnectString]' end),
- CONSTRAINT [PK_biml_connection] PRIMARY KEY CLUSTERED 
-(
-	[connection_name] ASC
+	[pattern_name] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[project_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[project_connection](
-	[project_id] [int] NOT NULL,
-	[connection_name] [nvarchar](64) NOT NULL,
- CONSTRAINT [PK_project_connection] PRIMARY KEY CLUSTERED 
-(
-	[project_id] ASC,
-	[connection_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  UserDefinedFunction [biml].[get data connections in project]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
--- ================================================================================================
--- Author:		Jim Miller (BITracks Consulting, LLC)
--- Create date: 07 Jan 2017
--- Modify date: 
--- Description:	Get a list of data connections in a project
---
--- sample exec:
-/*
-SELECT * FROM [biml].[get data connections in project] (10)
-*/
--- ================================================================================================
-
-CREATE FUNCTION [biml].[get data connections in project] (@project_id int)  
-RETURNS TABLE  
-AS  
-RETURN   
-(  
-SELECT * 
-  FROM [biml].[connection] 
- WHERE [connection_name] IN 
-     ( SELECT [connection_name] 
-	     FROM [biml].[project_connection] 
-		WHERE [project_id] = @project_id 
-	 )
-);
-
-
-
-
-
-
-
-
-
-GO
-/****** Object:  Table [biml].[project_environment]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[project_environment](
-	[project_id] [int] NOT NULL,
-	[environment_name] [nvarchar](32) NOT NULL,
-	[project_xml] [xml] NULL,
-	[parameter_xml] [xml] NULL,
-	[build_datetime] [smalldatetime] NULL,
-	[build_template_group] [nvarchar](32) NULL,
- CONSTRAINT [PK_project_environment] PRIMARY KEY CLUSTERED 
-(
-	[project_id] ASC,
-	[environment_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[project]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Table [biml].[project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -4623,369 +4391,7 @@ CREATE TABLE [biml].[project](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  View [biml].[vw_project_biml]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-
-CREATE VIEW [biml].[vw_project_biml] AS
-
-	SELECT '' AS [environment_name]
-		 , [project_name]
-		 , [project_xml]
-		 , [parameter_xml]
-		 , '<?xml version="1.0"?>' [parameter_xml script top]
-		 , [build_datetime]
-		 , [build_template_group]
-	  FROM [biml].[project]
-
-UNION ALL
-
-	SELECT pe.[environment_name]
-		 , pr.[project_name]
-		 , pe.[project_xml]
-		 , pe.[parameter_xml]
-		 , '<?xml version="1.0"?>' [parameter_xml script top]
-		 , pe.[build_datetime]
-		 , pe.[build_template_group]
-	  FROM [biml].[project_environment] pe
-	  JOIN [biml].[project] pr
-		ON pr.[project_id] = pe.[project_id]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GO
-/****** Object:  Table [biml].[project_adonet_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[project_adonet_connection](
-	[project_id] [int] NOT NULL,
-	[connection_name] [nvarchar](64) NOT NULL,
- CONSTRAINT [PK_project_adonet_connection] PRIMARY KEY CLUSTERED 
-(
-	[project_id] ASC,
-	[connection_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[adonet_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[adonet_connection](
-	[connection_name] [nvarchar](64) NOT NULL,
-	[provider] [nvarchar](512) NOT NULL,
-	[connect_string] [nvarchar](1024) NOT NULL,
-	[database_name] [nvarchar](128) NULL,
-	[provider_expression]  AS (('@[$Project::'+[connection_name])+'_Provider]'),
-	[connect_string_expression]  AS (('@[$Project::'+[connection_name])+'_ConnectString]'),
- CONSTRAINT [PK_biml_adonet_connection] PRIMARY KEY CLUSTERED 
-(
-	[connection_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[project_flatfile_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[project_flatfile_connection](
-	[project_id] [int] NOT NULL,
-	[connection_name] [nvarchar](64) NOT NULL,
- CONSTRAINT [PK_project_flatfile_connection] PRIMARY KEY CLUSTERED 
-(
-	[project_id] ASC,
-	[connection_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[flatfile_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[flatfile_connection](
-	[connection_name] [nvarchar](64) NOT NULL,
-	[file_path] [nvarchar](512) NOT NULL,
-	[file_format] [nvarchar](128) NOT NULL,
-	[file_path_expression]  AS (('@[$Project::'+[connection_name])+'_FilePath]'),
-	[file_format_expression]  AS (('@[$Project::'+[connection_name])+'_FileFormat]'),
- CONSTRAINT [PK_biml_flatfile_connection] PRIMARY KEY CLUSTERED 
-(
-	[connection_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[project_smtp_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[project_smtp_connection](
-	[project_id] [int] NOT NULL,
-	[connection_name] [nvarchar](64) NOT NULL,
- CONSTRAINT [PK_project_smtp_connection] PRIMARY KEY CLUSTERED 
-(
-	[project_id] ASC,
-	[connection_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[smtp_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[smtp_connection](
-	[connection_name] [nvarchar](64) NOT NULL,
-	[server_name] [nvarchar](128) NOT NULL,
-	[server_name_expression]  AS (('@[$Project::'+[connection_name])+'_Server]'),
- CONSTRAINT [PK_biml_smtp_connection] PRIMARY KEY CLUSTERED 
-(
-	[connection_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  View [biml].[vw_project_connection]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-
-
-
-CREATE VIEW [biml].[vw_project_connection] AS
-
-SELECT pc.[project_id]
-	 , pc.[connection_name]
-	 , 'OleDb' AS [connection_type]
-  FROM [biml].[connection] c
-  JOIN [biml].[project_connection] pc
-    ON pc.[connection_name] = c.[connection_name]
-
- UNION
-
-SELECT pc.[project_id]
-	 , pc.[connection_name]
-	 , 'AdoNet' AS [connection_type]
-  FROM [biml].[adonet_connection] c
-  JOIN [biml].[project_adonet_connection] pc
-    ON pc.[connection_name] = c.[connection_name]
-
- UNION
-
-SELECT pc.[project_id]
-	 , pc.[connection_name]
-	 , 'Smtp' AS [connection_type]
-  FROM [biml].[smtp_connection] c
-  JOIN [biml].[project_smtp_connection] pc
-    ON pc.[connection_name] = c.[connection_name]
-
- UNION
-
-SELECT pc.[project_id]
-	 , pc.[connection_name]
-	 , 'FlatFile' AS [connection_type]
-  FROM [biml].[flatfile_connection] c
-  JOIN [biml].[project_flatfile_connection] pc
-    ON pc.[connection_name] = c.[connection_name]
-
-
-
-
-
-
-
-
-
-
-
-GO
-/****** Object:  Table [biml].[parameter]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[parameter](
-	[parameter_name] [nvarchar](128) NOT NULL,
-	[parameter_datatype] [nvarchar](32) NOT NULL,
-	[parameter_value] [nvarchar](512) NOT NULL,
-	[parameter_reference]  AS (('@[$Project::'+[parameter_name])+']'),
- CONSTRAINT [PK_parameter] PRIMARY KEY CLUSTERED 
-(
-	[parameter_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[project_parameter]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[project_parameter](
-	[project_id] [int] NOT NULL,
-	[parameter_name] [nvarchar](128) NOT NULL,
- CONSTRAINT [PK_project_parameter] PRIMARY KEY CLUSTERED 
-(
-	[project_id] ASC,
-	[parameter_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  UserDefinedFunction [biml].[get parameters in project]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
--- ================================================================================================
--- Author:		Jim Miller (BITracks Consulting, LLC)
--- Create date: 07 Jan 2017
--- Modify date: 
--- Description:	Get a list of parameters in a project
---
--- sample exec:
-/*
-SELECT * FROM [biml].[get parameters in project] (10)
-*/
--- ================================================================================================
-
-CREATE FUNCTION [biml].[get parameters in project] (@project_id int)  
-RETURNS TABLE  
-AS  
-RETURN   
-(  
-SELECT * 
-  FROM [biml].[parameter]
- WHERE [parameter_name] IN 
-	 ( SELECT [parameter_name] 
-	     FROM [biml].[project_parameter] 
-		WHERE [project_id] = @project_id )
-);
-
-
-
-
-
-
-
-
-
-
-GO
-/****** Object:  UserDefinedFunction [biml].[get data connections not in project]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
--- ================================================================================================
--- Author:		Jim Miller (BITracks Consulting, LLC)
--- Create date: 20 Aug 2016
--- Modify date: 
--- Description:	Get a list of data connections not in project
---
--- sample exec:
-/*
-SELECT * FROM [biml].[get data connections not in project] (1)
-*/
--- ================================================================================================
-
-CREATE FUNCTION [biml].[get data connections not in project] (@project_id int)  
-RETURNS TABLE  
-AS  
-RETURN   
-(  
-	SELECT c.[connection_name]
-	  FROM [biml].[connection] c
-	  LEFT JOIN [biml].[project_connection] pc
-		ON pc.[connection_name] = c.[connection_name]
-	   AND pc.[project_id] = @project_id
-	 WHERE pc.[connection_name] IS NULL
-);  
-
-
-
-
-
-
-
-GO
-/****** Object:  Table [biml].[environment]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[environment](
-	[environment_name] [nvarchar](32) NOT NULL,
- CONSTRAINT [PK_biml_environment] PRIMARY KEY CLUSTERED 
-(
-	[environment_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  UserDefinedFunction [biml].[get environments not in project]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-
--- ================================================================================================
--- Author:		Jim Miller (BITracks Consulting, LLC)
--- Create date: 25 Aug 2016
--- Modify date: 
--- Description:	Get a list of parameters not in a project
---
--- sample exec:
-/*
-SELECT * FROM [biml].[get environments not in project] (1)
-*/
--- ================================================================================================
-
-CREATE FUNCTION [biml].[get environments not in project] (@project_id int)  
-RETURNS TABLE  
-AS  
-RETURN   
-(  
-	SELECT e.[environment_name]
-	  FROM [biml].[environment] e
-	  LEFT JOIN [biml].[project_environment] pe
-		ON pe.[environment_name] = e.[environment_name]
-	   AND pe.[project_id] = @project_id
-	 WHERE pe.[environment_name] IS NULL
-);  
-
-
-
-
-
-
-
-
-GO
-/****** Object:  Table [biml].[project_package]    Script Date: 8/18/2018 10:04:51 AM ******/
+/****** Object:  Table [biml].[project_package]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5001,41 +4407,7 @@ CREATE TABLE [biml].[project_package](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[package](
-	[package_name] [nvarchar](128) NOT NULL,
-	[pattern_name] [nvarchar](32) NOT NULL,
-	[package_text] [nvarchar](max) NOT NULL,
-	[package_xml] [xml] NOT NULL,
-	[build_datetime] [smalldatetime] NOT NULL,
-	[build_template] [nvarchar](32) NOT NULL,
- CONSTRAINT [PK_package] PRIMARY KEY CLUSTERED 
-(
-	[package_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-/****** Object:  Table [biml].[pattern]    Script Date: 8/18/2018 10:04:51 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [biml].[pattern](
-	[pattern_name] [nvarchar](32) NOT NULL,
-	[has_config_table] [nvarchar](1) NOT NULL,
-	[author_id] [int] NOT NULL,
-	[description] [nvarchar](4000) NULL,
- CONSTRAINT [PK_pattern] PRIMARY KEY CLUSTERED 
-(
-	[pattern_name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  UserDefinedFunction [biml].[get packages]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  UserDefinedFunction [biml].[get packages]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5091,7 +4463,7 @@ RETURN
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get packages not in any project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  UserDefinedFunction [biml].[get packages not in any project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5130,7 +4502,7 @@ RETURN
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get packages not in project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  UserDefinedFunction [biml].[get packages not in project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5170,7 +4542,38 @@ RETURN
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get parameters not in project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[parameter]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[parameter](
+	[parameter_name] [nvarchar](128) NOT NULL,
+	[parameter_datatype] [nvarchar](32) NOT NULL,
+	[parameter_value] [nvarchar](512) NOT NULL,
+	[parameter_reference]  AS (('@[$Project::'+[parameter_name])+']'),
+ CONSTRAINT [PK_parameter] PRIMARY KEY CLUSTERED 
+(
+	[parameter_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [biml].[project_parameter]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[project_parameter](
+	[project_id] [int] NOT NULL,
+	[parameter_name] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_project_parameter] PRIMARY KEY CLUSTERED 
+(
+	[project_id] ASC,
+	[parameter_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [biml].[get parameters not in project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5208,7 +4611,40 @@ RETURN
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get adonet connections not in project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[project_adonet_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[project_adonet_connection](
+	[project_id] [int] NOT NULL,
+	[connection_name] [nvarchar](64) NOT NULL,
+ CONSTRAINT [PK_project_adonet_connection] PRIMARY KEY CLUSTERED 
+(
+	[project_id] ASC,
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [biml].[adonet_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[adonet_connection](
+	[connection_name] [nvarchar](64) NOT NULL,
+	[provider] [nvarchar](512) NOT NULL,
+	[connect_string] [nvarchar](1024) NOT NULL,
+	[database_name] [nvarchar](128) NULL,
+	[provider_expression]  AS (('@[$Project::'+[connection_name])+'_Provider]'),
+	[connect_string_expression]  AS (('@[$Project::'+[connection_name])+'_ConnectString]'),
+ CONSTRAINT [PK_biml_adonet_connection] PRIMARY KEY CLUSTERED 
+(
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [biml].[get adonet connections not in project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5250,7 +4686,39 @@ RETURN
 
 
 GO
-/****** Object:  UserDefinedFunction [biml].[get flatfile connections not in project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[project_flatfile_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[project_flatfile_connection](
+	[project_id] [int] NOT NULL,
+	[connection_name] [nvarchar](64) NOT NULL,
+ CONSTRAINT [PK_project_flatfile_connection] PRIMARY KEY CLUSTERED 
+(
+	[project_id] ASC,
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [biml].[flatfile_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[flatfile_connection](
+	[connection_name] [nvarchar](64) NOT NULL,
+	[file_path] [nvarchar](512) NOT NULL,
+	[file_format] [nvarchar](128) NOT NULL,
+	[file_path_expression]  AS (('@[$Project::'+[connection_name])+'_FilePath]'),
+	[file_format_expression]  AS (('@[$Project::'+[connection_name])+'_FileFormat]'),
+ CONSTRAINT [PK_biml_flatfile_connection] PRIMARY KEY CLUSTERED 
+(
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [biml].[get flatfile connections not in project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5292,7 +4760,7 @@ RETURN
 
 
 GO
-/****** Object:  Table [biml].[package_config (Execute Process)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Execute Process)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5310,7 +4778,7 @@ CREATE TABLE [biml].[package_config (Execute Process)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[fact_table_partition_config (Standard)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[fact_table_partition_config (Standard)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5338,7 +4806,7 @@ CREATE TABLE [biml].[fact_table_partition_config (Standard)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[fact_table_switch_config (Standard)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[fact_table_switch_config (Standard)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5364,7 +4832,7 @@ CREATE TABLE [biml].[fact_table_switch_config (Standard)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[dim_table_merge_config (Standard)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[dim_table_merge_config (Standard)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5386,7 +4854,7 @@ CREATE TABLE [biml].[dim_table_merge_config (Standard)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[fact_table_merge_config (Basic)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[fact_table_merge_config (Basic)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5406,7 +4874,25 @@ CREATE TABLE [biml].[fact_table_merge_config (Basic)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [biml].[get config tables for packages]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Execute SQL)]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[package_config (Execute SQL)](
+	[connection_manager] [nvarchar](64) NOT NULL,
+	[package_qualifier] [nvarchar](64) NOT NULL,
+	[query] [nvarchar](max) NOT NULL,
+	[is_expression] [nvarchar](1) NOT NULL,
+	[return_row_count] [nvarchar](1) NOT NULL,
+	[package_name]  AS ('Execute SQL - '+[package_qualifier]),
+ CONSTRAINT [PK_package_config (Execute SQL)] PRIMARY KEY CLUSTERED 
+(
+	[package_qualifier] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [biml].[get config tables for packages]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5506,7 +4992,7 @@ SELECT ep.[package_qualifier]
 
 
 GO
-/****** Object:  Table [etl].[dim_column]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [etl].[dim_column]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5533,7 +5019,7 @@ CREATE TABLE [etl].[dim_column](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[dim_column]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [dbo].[dim_column]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5562,7 +5048,7 @@ CREATE TABLE [dbo].[dim_column](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [dbo].[get all column changes]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  UserDefinedFunction [dbo].[get all column changes]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5619,7 +5105,37 @@ SELECT 'Deleted' AS [event]
  WHERE e.[database_name] IS NULL
 );  
 GO
-/****** Object:  UserDefinedFunction [biml].[get smtp connections not in project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[project_smtp_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[project_smtp_connection](
+	[project_id] [int] NOT NULL,
+	[connection_name] [nvarchar](64) NOT NULL,
+ CONSTRAINT [PK_project_smtp_connection] PRIMARY KEY CLUSTERED 
+(
+	[project_id] ASC,
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [biml].[smtp_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[smtp_connection](
+	[connection_name] [nvarchar](64) NOT NULL,
+	[server_name] [nvarchar](128) NOT NULL,
+	[server_name_expression]  AS (('@[$Project::'+[connection_name])+'_Server]'),
+ CONSTRAINT [PK_biml_smtp_connection] PRIMARY KEY CLUSTERED 
+(
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [biml].[get smtp connections not in project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5659,7 +5175,33 @@ RETURN
 
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[get all insert and update dates]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [dbo].[dim_table]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[dim_table](
+	[table_sk] [int] IDENTITY(1,1) NOT NULL,
+	[server_name] [nvarchar](128) NOT NULL,
+	[database_name] [nvarchar](128) NOT NULL,
+	[table_schema] [nvarchar](128) NOT NULL,
+	[table_name] [nvarchar](128) NOT NULL,
+	[table_type] [nvarchar](32) NOT NULL,
+	[has_identity] [nvarchar](1) NOT NULL,
+	[has_primary_key] [nvarchar](1) NOT NULL,
+	[row_data_source] [nvarchar](16) NOT NULL,
+	[row_is_current] [nchar](1) NOT NULL,
+	[row_effective_date] [date] NOT NULL,
+	[row_expiration_date] [date] NOT NULL,
+	[row_insert_date] [date] NOT NULL,
+	[row_update_date] [date] NOT NULL,
+ CONSTRAINT [PK dbo dim_table] PRIMARY KEY NONCLUSTERED 
+(
+	[table_sk] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [dbo].[get all insert and update dates]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5694,7 +5236,7 @@ RETURN
 	  FROM [dbo].[dim_column]
 );  
 GO
-/****** Object:  UserDefinedFunction [biml].[get packages in project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  UserDefinedFunction [biml].[get packages in project]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5734,7 +5276,30 @@ RETURN
 
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[get all table changes]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [etl].[dim_table]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [etl].[dim_table](
+	[server_name] [nvarchar](128) NOT NULL,
+	[database_name] [nvarchar](128) NOT NULL,
+	[table_schema] [nvarchar](128) NOT NULL,
+	[table_name] [nvarchar](128) NOT NULL,
+	[table_type] [nvarchar](32) NOT NULL,
+	[has_identity] [nvarchar](1) NOT NULL,
+	[has_primary_key] [nvarchar](1) NOT NULL,
+	[enable_change_tracking] [nvarchar](1) NOT NULL,
+ CONSTRAINT [PK_etl_dim_table] PRIMARY KEY CLUSTERED 
+(
+	[server_name] ASC,
+	[database_name] ASC,
+	[table_schema] ASC,
+	[table_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [dbo].[get all table changes]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5788,7 +5353,7 @@ SELECT 'Deleted' AS [event]
  WHERE e.[database_name] IS NULL
 );  
 GO
-/****** Object:  View [biml].[vw_package_biml]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  View [biml].[vw_package_biml]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5823,7 +5388,7 @@ SELECT p.[project_name]
 
 
 GO
-/****** Object:  UserDefinedFunction [dbo].[get all column changes by date]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  UserDefinedFunction [dbo].[get all column changes by date]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5884,7 +5449,448 @@ RETURN
 	   AND (d.[row_update_date] = @date or d.[row_insert_date]= @date)
 );  
 GO
-/****** Object:  Table [biml].[added_dim_column_names]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  UserDefinedFunction [dbo].[get all table changes by dates]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- ================================================================================================
+-- Author:    Jim Miller (BITracks Consulting, LLC)
+-- Create date: 10 Dec 2016
+-- Modified by: Ena Jukic (Software developer)
+-- Modify date: 06 March 2018
+-- Description: Get all metadata table changes by date
+--
+-- sample exec:
+/*
+SELECT * FROM [dbo].[get all table changes by dates] ('06/18/2017')
+*/
+-- ================================================================================================
+CREATE FUNCTION [dbo].[get all table changes by dates] (@date smalldatetime)   
+RETURNS TABLE  
+AS  
+RETURN   
+(  
+	SELECT 'Added' AS [event]
+	   , d.*
+	  FROM [dbo].[dim_table] d
+	  JOIN [etl].[dim_table] e
+		ON e.[database_name] = d.[database_name]
+	   AND e.[table_schema]  = d.[table_schema]
+	   AND e.[table_name]    = d.[table_name]
+	 WHERE d.[row_insert_date] = d.[row_update_date] 
+	   AND (d.[row_update_date] = @date or d.[row_insert_date] = @date)
+
+	UNION
+    
+	SELECT 'Changed' AS [event]
+	   , d.*
+	  FROM [dbo].[dim_table] d
+	  JOIN [etl].[dim_table] e
+		ON e.[database_name] = d.[database_name]
+	   AND e.[table_schema]  = d.[table_schema]
+	   AND e.[table_name]    = d.[table_name]
+	 WHERE d.[row_insert_date] <> d.[row_update_date]
+	   AND (d.[row_update_date] = @date or d.[row_insert_date] = @date)
+    
+	UNION
+
+	SELECT 'Deleted' AS [event]
+	   , d.*
+	  FROM [dbo].[dim_table] d
+	  LEFT JOIN [etl].[dim_table] e
+		ON e.[database_name] = d.[database_name]
+	   AND e.[table_schema]  = d.[table_schema]
+	   AND e.[table_name]    = d.[table_name]
+	 WHERE e.[database_name] IS NULL 
+	   AND (d.[row_insert_date] = @date or d.[row_update_date] = @date)
+);
+GO
+/****** Object:  Table [biml].[package_config (Data Flow)]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[package_config (Data Flow)](
+	[src_connection] [nvarchar](64) NOT NULL,
+	[src_query] [nvarchar](max) NOT NULL,
+	[is_expression] [nvarchar](1) NOT NULL,
+	[src_query_direct] [nvarchar](max) NULL,
+	[package_qualifier] [nvarchar](64) NOT NULL,
+	[dst_connection] [nvarchar](64) NOT NULL,
+	[dst_schema] [nvarchar](128) NOT NULL,
+	[dst_table] [nvarchar](128) NOT NULL,
+	[dst_truncate] [nvarchar](1) NOT NULL,
+	[keep_identity] [nvarchar](1) NOT NULL,
+	[package_name]  AS (('Data Flow - '+[package_qualifier])+case when [dst_table]='' then '' else ((' - '+[dst_schema])+'.')+[dst_table] end),
+ CONSTRAINT [PK_package_config (Data Flow)] PRIMARY KEY CLUSTERED 
+(
+	[package_qualifier] ASC,
+	[dst_schema] ASC,
+	[dst_table] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  View [biml].[vw_package_query]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+CREATE VIEW [biml].[vw_package_query] AS
+
+	SELECT [package_name] AS [Package]
+		 , 'Source: ' + [src_connection] + ' - Destination: ' + [dst_connection]  + ' - Table: [' + [dst_schema] + '].[' + [dst_table] + ']' AS [Connection]
+		 , [src_query] AS [Query]
+	  FROM [biml].[package_config (Data Flow)]
+
+UNION ALL
+
+	SELECT [package_name] AS [Package]
+		 , 'Execute on Connection: ' + [connection_manager]  AS [Connection]
+		  ,[query] AS [Query]
+	  FROM [biml].[package_config (Execute SQL)]
+
+
+
+
+GO
+/****** Object:  Table [biml].[connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[connection](
+	[connection_name] [nvarchar](64) NOT NULL,
+	[server_name] [nvarchar](128) NOT NULL,
+	[database_name] [nvarchar](128) NOT NULL,
+	[provider] [nvarchar](64) NOT NULL,
+	[custom_connect_string] [nvarchar](1024) NOT NULL,
+	[connection_expression]  AS (case when rtrim([custom_connect_string])='' then ((((('"Data Source=" + @[$Project::'+[connection_name])+'_Server] + ";Initial Catalog=" + @[$Project::')+[connection_name])+'_Database] + ";Provider=" + @[$Project::')+[connection_name])+'_Provider]  + ";Integrated Security=SSPI;Auto Translate=False;"' else ('@[$Project::'+[connection_name])+'_ConnectString]' end),
+ CONSTRAINT [PK_biml_connection] PRIMARY KEY CLUSTERED 
+(
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [biml].[project_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[project_connection](
+	[project_id] [int] NOT NULL,
+	[connection_name] [nvarchar](64) NOT NULL,
+ CONSTRAINT [PK_project_connection] PRIMARY KEY CLUSTERED 
+(
+	[project_id] ASC,
+	[connection_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [biml].[get data connections in project]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- ================================================================================================
+-- Author:		Jim Miller (BITracks Consulting, LLC)
+-- Create date: 07 Jan 2017
+-- Modify date: 
+-- Description:	Get a list of data connections in a project
+--
+-- sample exec:
+/*
+SELECT * FROM [biml].[get data connections in project] (10)
+*/
+-- ================================================================================================
+
+CREATE FUNCTION [biml].[get data connections in project] (@project_id int)  
+RETURNS TABLE  
+AS  
+RETURN   
+(  
+SELECT * 
+  FROM [biml].[connection] 
+ WHERE [connection_name] IN 
+     ( SELECT [connection_name] 
+	     FROM [biml].[project_connection] 
+		WHERE [project_id] = @project_id 
+	 )
+);
+
+
+
+
+
+
+
+
+
+GO
+/****** Object:  Table [biml].[project_environment]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[project_environment](
+	[project_id] [int] NOT NULL,
+	[environment_name] [nvarchar](32) NOT NULL,
+	[project_xml] [xml] NULL,
+	[parameter_xml] [xml] NULL,
+	[build_datetime] [smalldatetime] NULL,
+	[build_template_group] [nvarchar](32) NULL,
+ CONSTRAINT [PK_project_environment] PRIMARY KEY CLUSTERED 
+(
+	[project_id] ASC,
+	[environment_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  View [biml].[vw_project_biml]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE VIEW [biml].[vw_project_biml] AS
+
+	SELECT '' AS [environment_name]
+		 , [project_name]
+		 , [project_xml]
+		 , [parameter_xml]
+		 , '<?xml version="1.0"?>' [parameter_xml script top]
+		 , [build_datetime]
+		 , [build_template_group]
+	  FROM [biml].[project]
+
+UNION ALL
+
+	SELECT pe.[environment_name]
+		 , pr.[project_name]
+		 , pe.[project_xml]
+		 , pe.[parameter_xml]
+		 , '<?xml version="1.0"?>' [parameter_xml script top]
+		 , pe.[build_datetime]
+		 , pe.[build_template_group]
+	  FROM [biml].[project_environment] pe
+	  JOIN [biml].[project] pr
+		ON pr.[project_id] = pe.[project_id]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GO
+/****** Object:  View [biml].[vw_project_connection]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+CREATE VIEW [biml].[vw_project_connection] AS
+
+SELECT pc.[project_id]
+	 , pc.[connection_name]
+	 , 'OleDb' AS [connection_type]
+  FROM [biml].[connection] c
+  JOIN [biml].[project_connection] pc
+    ON pc.[connection_name] = c.[connection_name]
+
+ UNION
+
+SELECT pc.[project_id]
+	 , pc.[connection_name]
+	 , 'AdoNet' AS [connection_type]
+  FROM [biml].[adonet_connection] c
+  JOIN [biml].[project_adonet_connection] pc
+    ON pc.[connection_name] = c.[connection_name]
+
+ UNION
+
+SELECT pc.[project_id]
+	 , pc.[connection_name]
+	 , 'Smtp' AS [connection_type]
+  FROM [biml].[smtp_connection] c
+  JOIN [biml].[project_smtp_connection] pc
+    ON pc.[connection_name] = c.[connection_name]
+
+ UNION
+
+SELECT pc.[project_id]
+	 , pc.[connection_name]
+	 , 'FlatFile' AS [connection_type]
+  FROM [biml].[flatfile_connection] c
+  JOIN [biml].[project_flatfile_connection] pc
+    ON pc.[connection_name] = c.[connection_name]
+
+
+
+
+
+
+
+
+
+
+
+GO
+/****** Object:  UserDefinedFunction [biml].[get parameters in project]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- ================================================================================================
+-- Author:		Jim Miller (BITracks Consulting, LLC)
+-- Create date: 07 Jan 2017
+-- Modify date: 
+-- Description:	Get a list of parameters in a project
+--
+-- sample exec:
+/*
+SELECT * FROM [biml].[get parameters in project] (10)
+*/
+-- ================================================================================================
+
+CREATE FUNCTION [biml].[get parameters in project] (@project_id int)  
+RETURNS TABLE  
+AS  
+RETURN   
+(  
+SELECT * 
+  FROM [biml].[parameter]
+ WHERE [parameter_name] IN 
+	 ( SELECT [parameter_name] 
+	     FROM [biml].[project_parameter] 
+		WHERE [project_id] = @project_id )
+);
+
+
+
+
+
+
+
+
+
+
+GO
+/****** Object:  UserDefinedFunction [biml].[get data connections not in project]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- ================================================================================================
+-- Author:		Jim Miller (BITracks Consulting, LLC)
+-- Create date: 20 Aug 2016
+-- Modify date: 
+-- Description:	Get a list of data connections not in project
+--
+-- sample exec:
+/*
+SELECT * FROM [biml].[get data connections not in project] (1)
+*/
+-- ================================================================================================
+
+CREATE FUNCTION [biml].[get data connections not in project] (@project_id int)  
+RETURNS TABLE  
+AS  
+RETURN   
+(  
+	SELECT c.[connection_name]
+	  FROM [biml].[connection] c
+	  LEFT JOIN [biml].[project_connection] pc
+		ON pc.[connection_name] = c.[connection_name]
+	   AND pc.[project_id] = @project_id
+	 WHERE pc.[connection_name] IS NULL
+);  
+
+
+
+
+
+
+
+GO
+/****** Object:  Table [biml].[environment]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [biml].[environment](
+	[environment_name] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK_biml_environment] PRIMARY KEY CLUSTERED 
+(
+	[environment_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  UserDefinedFunction [biml].[get environments not in project]    Script Date: 11/17/2018 3:39:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- ================================================================================================
+-- Author:		Jim Miller (BITracks Consulting, LLC)
+-- Create date: 25 Aug 2016
+-- Modify date: 
+-- Description:	Get a list of parameters not in a project
+--
+-- sample exec:
+/*
+SELECT * FROM [biml].[get environments not in project] (1)
+*/
+-- ================================================================================================
+
+CREATE FUNCTION [biml].[get environments not in project] (@project_id int)  
+RETURNS TABLE  
+AS  
+RETURN   
+(  
+	SELECT e.[environment_name]
+	  FROM [biml].[environment] e
+	  LEFT JOIN [biml].[project_environment] pe
+		ON pe.[environment_name] = e.[environment_name]
+	   AND pe.[project_id] = @project_id
+	 WHERE pe.[environment_name] IS NULL
+);  
+
+
+
+
+
+
+
+
+GO
+/****** Object:  Table [biml].[added_dim_column_names]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5907,7 +5913,7 @@ CREATE TABLE [biml].[added_dim_column_names](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[application_config]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[application_config]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5921,7 +5927,7 @@ CREATE TABLE [biml].[application_config](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[build_log]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[build_log]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5937,7 +5943,7 @@ CREATE TABLE [biml].[build_log](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[column_alias]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[column_alias]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5955,7 +5961,7 @@ CREATE TABLE [biml].[column_alias](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[environment_parameter]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[environment_parameter]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5971,7 +5977,7 @@ CREATE TABLE [biml].[environment_parameter](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[flatfile_format]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[flatfile_format]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -5994,7 +6000,7 @@ CREATE TABLE [biml].[flatfile_format](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (CT Replication)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (CT Replication)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6017,7 +6023,7 @@ CREATE TABLE [biml].[package_config (CT Replication)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (Execute Process) variable]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Execute Process) variable]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6036,7 +6042,7 @@ CREATE TABLE [biml].[package_config (Execute Process) variable](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (Execute Script)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Execute Script)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6053,7 +6059,7 @@ CREATE TABLE [biml].[package_config (Execute Script)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (Execute Script) variable]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Execute Script) variable]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6072,7 +6078,7 @@ CREATE TABLE [biml].[package_config (Execute Script) variable](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (Foreach Data Flow)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Foreach Data Flow)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6099,7 +6105,7 @@ CREATE TABLE [biml].[package_config (Foreach Data Flow)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (Foreach Execute SQL)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Foreach Execute SQL)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6121,7 +6127,7 @@ CREATE TABLE [biml].[package_config (Foreach Execute SQL)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[package_config (Manual)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[package_config (Manual)]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6135,7 +6141,7 @@ CREATE TABLE [biml].[package_config (Manual)](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[project_package_group]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[project_package_group]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6151,7 +6157,7 @@ CREATE TABLE [biml].[project_package_group](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[project_script_task]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[project_script_task]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6166,7 +6172,7 @@ CREATE TABLE [biml].[project_script_task](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[query_history]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[query_history]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6185,7 +6191,7 @@ CREATE TABLE [biml].[query_history](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[query_repository]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[query_repository]    Script Date: 11/17/2018 3:39:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6201,7 +6207,7 @@ CREATE TABLE [biml].[query_repository](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[script_task]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[script_task]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6215,7 +6221,7 @@ CREATE TABLE [biml].[script_task](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[sensitive_data]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[sensitive_data]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6229,7 +6235,7 @@ CREATE TABLE [biml].[sensitive_data](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[template]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[template]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6248,7 +6254,7 @@ CREATE TABLE [biml].[template](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[user]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[user]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6266,7 +6272,7 @@ CREATE TABLE [biml].[user](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [biml].[user_activity]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [biml].[user_activity]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6285,7 +6291,7 @@ CREATE TABLE [biml].[user_activity](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [etl].[dim_database]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [etl].[dim_database]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6304,7 +6310,7 @@ CREATE TABLE [etl].[dim_database](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [etl].[dim_server]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [etl].[dim_server]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6319,7 +6325,27 @@ CREATE TABLE [etl].[dim_server](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [stg].[dim_column]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [jtts].[json_repository]    Script Date: 11/17/2018 3:40:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [jtts].[json_repository](
+	[label] [nvarchar](16) NOT NULL,
+	[server_name] [nvarchar](128) NOT NULL,
+	[database_name] [nvarchar](128) NOT NULL,
+	[create_datetime] [datetime] NOT NULL,
+	[label_notes] [nvarchar](3000) NULL,
+	[json_file] [varbinary](max) NOT NULL,
+ CONSTRAINT [PK jtts json_repository] PRIMARY KEY CLUSTERED 
+(
+	[label] ASC,
+	[server_name] ASC,
+	[database_name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [stg].[dim_column]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6346,7 +6372,7 @@ CREATE TABLE [stg].[dim_column](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [stg].[dim_database]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [stg].[dim_database]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6364,7 +6390,7 @@ CREATE TABLE [stg].[dim_database](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [stg].[dim_table]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  Table [stg].[dim_table]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6450,6 +6476,8 @@ GO
 ALTER TABLE [biml].[query_repository] ADD  CONSTRAINT [biml query_repository insert_datetime default]  DEFAULT (getdate()) FOR [insert_datetime]
 GO
 ALTER TABLE [etl].[dim_column] ADD  CONSTRAINT [DF__dim_column__merge_type]  DEFAULT ('t1') FOR [merge_type]
+GO
+ALTER TABLE [jtts].[json_repository] ADD  CONSTRAINT [jtts json_repository create_datetime default]  DEFAULT (getdate()) FOR [create_datetime]
 GO
 ALTER TABLE [biml].[fact_table_partition_config (Standard)]  WITH CHECK ADD  CONSTRAINT [CC_truncate_switch_in_table] CHECK  (([truncate_switch_in_table]='Y' OR [truncate_switch_in_table]='N'))
 GO
@@ -6551,7 +6579,7 @@ ALTER TABLE [etl].[dim_table]  WITH CHECK ADD  CONSTRAINT [CC etl dim_table has_
 GO
 ALTER TABLE [etl].[dim_table] CHECK CONSTRAINT [CC etl dim_table has_primary_key]
 GO
-/****** Object:  StoredProcedure [biml].[Auto Save Query History]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Auto Save Query History]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6634,7 +6662,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Build All Packages]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build All Packages]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7298,7 +7326,7 @@ IF @package_count != 0
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build All Projects]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build All Projects]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7450,7 +7478,7 @@ DEALLOCATE [proc_cursor_param];
 
 EXEC [biml].[Save Query History]
 GO
-/****** Object:  StoredProcedure [biml].[Build BIML Utility]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build BIML Utility]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7555,7 +7583,7 @@ SELECT @return_code AS [return code], @error_message AS [error message]
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Group and Run All Packages]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Group and Run All Packages]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -7811,7 +7839,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (CT Replication)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (CT Replication)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8005,7 +8033,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Data Flow)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Data Flow)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8235,7 +8263,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Data Flow) AS400]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Data Flow) AS400]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8474,7 +8502,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Execute Process)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Execute Process)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8665,7 +8693,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Execute Script)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Execute Script)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8794,7 +8822,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Execute SQL)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Execute SQL)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8947,7 +8975,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Foreach Data Flow)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Foreach Data Flow)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9162,7 +9190,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Foreach Execute SQL)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Foreach Execute SQL)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9346,7 +9374,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Packages (Manual)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Packages (Manual)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9425,7 +9453,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Parameters for Connections]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Parameters for Connections]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -9682,7 +9710,7 @@ VALUES
   , 'Auto-create Project Parameters'
   , 'Finish');
 GO
-/****** Object:  StoredProcedure [biml].[Build Project Full]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Project Full]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10172,7 +10200,7 @@ SELECT [biml].[get user id] ()
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Project Parameters]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Project Parameters]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10295,7 +10323,7 @@ SET @Biml = CAST(@Params AS XML)
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Build Single Project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Single Project]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10450,7 +10478,7 @@ DEALLOCATE [proc_cursor_param];
 
 EXEC [biml].[Save Query History]
 GO
-/****** Object:  StoredProcedure [biml].[Build Templates]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Build Templates]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10662,7 +10690,7 @@ INSERT INTO [biml].[template]
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Check Connection Name]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Check Connection Name]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10698,7 +10726,7 @@ SELECT @data_connection + @ado_connection + @smtp_connection + @flat_connection
 
 END
 GO
-/****** Object:  StoredProcedure [biml].[Clone Execute Process Package]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Clone Execute Process Package]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10802,7 +10830,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Clone Execute Script Package]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Clone Execute Script Package]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -10875,7 +10903,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Clone Execute SQL Package]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Clone Execute SQL Package]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11043,7 +11071,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Clone Project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Clone Project]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11163,7 +11191,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [biml].[Delete Project]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Delete Project]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11220,7 +11248,7 @@ BEGIN
 	DELETE FROM [biml].[project_smtp_connection] WHERE [project_id] = @projec_id;
 END
 GO
-/****** Object:  StoredProcedure [biml].[Deleted Projects Clean Up]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Deleted Projects Clean Up]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11287,7 +11315,7 @@ DELETE [biml].[project_smtp_connection]
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Insert Dim Table Merge Config]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert Dim Table Merge Config]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11364,7 +11392,7 @@ END
 /****** Object:  StoredProcedure [biml].[Insert Dim Table Merge Config]    Script Date: 10/12/2017 4:10:49 AM ******/
 SET ANSI_NULLS ON
 GO
-/****** Object:  StoredProcedure [biml].[Insert Environment]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert Environment]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11394,7 +11422,7 @@ VALUES
     (@environment_name)		
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert Execute Process Variable]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert Execute Process Variable]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11447,7 +11475,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert Fact Table Merge Basic]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert Fact Table Merge Basic]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11513,7 +11541,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert Fact Table Partition Standard]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert Fact Table Partition Standard]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11594,7 +11622,7 @@ END
 /****** Object:  StoredProcedure [biml].[Insert Fact Table Partition Standard]    Script Date: 10/12/2017 4:10:49 AM ******/
 SET ANSI_NULLS ON
 GO
-/****** Object:  StoredProcedure [biml].[Insert Fact Table Switch Standard]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert Fact Table Switch Standard]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11664,7 +11692,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update (Execute Script) Variable]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update (Execute Script) Variable]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11717,7 +11745,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update AdoNet Connection]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update AdoNet Connection]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11787,7 +11815,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update Connection]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update Connection]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11863,7 +11891,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update Environment Parameter]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update Environment Parameter]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11911,7 +11939,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update Flat Connection]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update Flat Connection]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11977,7 +12005,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update Flat File Column Alias]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update Flat File Column Alias]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12027,7 +12055,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update Flat File Format]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update Flat File Format]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12108,7 +12136,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update Parameter]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update Parameter]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12172,7 +12200,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert or Update SMTP Connection]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert or Update SMTP Connection]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12306,7 +12334,7 @@ ELSE
 	END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Insert Project Package Rows]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Insert Project Package Rows]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12386,7 +12414,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Primary Key Update (Data Flow)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Primary Key Update (Data Flow)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12496,7 +12524,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [biml].[Primary Key Update (Execute Process)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Primary Key Update (Execute Process)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12600,7 +12628,7 @@ END
 SET ANSI_NULLS ON
 
 GO
-/****** Object:  StoredProcedure [biml].[Primary Key Update (Execute Script)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Primary Key Update (Execute Script)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12688,7 +12716,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [biml].[Primary Key Update (Execute SQL)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Primary Key Update (Execute SQL)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12806,7 +12834,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [biml].[Primary Key Update (Foreach Data Flow)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Primary Key Update (Foreach Data Flow)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12931,7 +12959,7 @@ BEGIN
 		END
 END
 GO
-/****** Object:  StoredProcedure [biml].[Primary Key Update (Foreach Execute SQL)]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Primary Key Update (Foreach Execute SQL)]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13034,7 +13062,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [biml].[Register User]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Register User]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13073,7 +13101,7 @@ SELECT @UserID = [user_id]
 
 END
 GO
-/****** Object:  StoredProcedure [biml].[Save Query History]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Save Query History]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13225,7 +13253,7 @@ SELECT 'package_config (Foreach Execute SQL)' AS [package_config_table]
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Update Merge Statements]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Update Merge Statements]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13559,7 +13587,7 @@ VALUES
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Update Partition Statements]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Update Partition Statements]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13684,7 +13712,7 @@ VALUES
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Update Sensitive Data Placeholders]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Update Sensitive Data Placeholders]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13854,7 +13882,7 @@ VALUES
 
 
 GO
-/****** Object:  StoredProcedure [biml].[Update Switch Statements]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [biml].[Update Switch Statements]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13973,7 +14001,7 @@ VALUES
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Change Server Name in Metadata]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [dbo].[Change Server Name in Metadata]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14028,7 +14056,7 @@ SET @rows = @rows + @@ROWCOUNT;
 
 SELECT @rows AS [row_count];
 GO
-/****** Object:  StoredProcedure [dbo].[Delete Server Metadata]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [dbo].[Delete Server Metadata]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14085,8 +14113,7 @@ SET @rows = @rows + @@ROWCOUNT;
 
 SELECT @rows AS [row_count];
 GO
-
-
+/****** Object:  StoredProcedure [etl].[Reset Metadata]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14159,7 +14186,7 @@ TRUNCATE TABLE [stg].[dim_database]
 TRUNCATE TABLE [stg].[dim_table]
 */
 GO
-/****** Object:  StoredProcedure [html].[Output Package Query File]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [html].[Output Package Query File]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14488,7 +14515,7 @@ SELECT @return_code AS [return code], @solution_name + '.html' AS [html file]
 
 
 GO
-/****** Object:  StoredProcedure [html].[Output Package Query File v2]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [html].[Output Package Query File v2]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14816,7 +14843,7 @@ IF ISNULL(@Html,'') = ''
 	SET @Html = 'Incomplete Project'
 SELECT @Html;
 GO
-/****** Object:  StoredProcedure [html].[Output Query as Table]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [html].[Output Query as Table]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14890,7 +14917,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [jtts].[Json Select Export]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [jtts].[Json Select Export]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -15031,7 +15058,7 @@ SELECT @return_code AS [return code], @FileName AS [json file]
 
 
 GO
-/****** Object:  StoredProcedure [jtts].[Json Select Import]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [jtts].[Json Select Import]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -15297,7 +15324,7 @@ END CATCH
 
 
 GO
-/****** Object:  StoredProcedure [jtts].[Json Table Export]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [jtts].[Json Table Export]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -15313,6 +15340,8 @@ GO
 -- Modify date: 07 Mar 2017 - Changed to use temp table: #export_table
 -- Modify date: 15 Mar 2017 - Added SQL Platform and Product Version
 -- Modify date: 20 Mar 2017 - Changed @label to be optional paramater (replaced by partial guid) 
+-- Modify date: 16 Nov 2018 - Added option to send output to table: [jtts].[json_repository]
+-- Modify date: 16 Nov 2018 - Added option to exclude graph tables ('node' and 'edge') 
 --
 -- Description:	Json Export of Database Tables
 --
@@ -15321,15 +15350,19 @@ GO
 EXEC [jtts].[Json Table Export] 'Exp_Test', 'all'
 EXEC [jtts].[Json Table Export] 'FQ-v1', 'include', 'biml.package_config (CT Replication),biml.query_repository'
 EXEC [jtts].[Json Table Export] 'FQ-v1', 'exclude', 'biml.application_config'
+EXEC [jtts].[Json Table Export] 'All_Projects', 'all', '', 'Y', 'N', 'Use for bimlsnap project management'
 */
 --
 -- ========================================================================================================================================
 
 CREATE PROCEDURE [jtts].[Json Table Export]
 (
-	 @label NVARCHAR(8)
+	 @label NVARCHAR(16)
    , @action NVARCHAR(8)
    , @tables NVARCHAR(MAX) = ''
+   , @exclude_graph_tables VARCHAR(1) = 'Y'
+   , @use_file_table VARCHAR(1) = 'Y'
+   , @label_notes NVARCHAR(3000) = ''
 )
 AS
 
@@ -15370,6 +15403,20 @@ IF CHARINDEX('[', @tables) + CHARINDEX(']', @tables) > 0
 		RETURN
 	END
 
+IF @use_file_table NOT IN ('Y', 'N')
+	BEGIN
+		SET @error_message = 'Must provide a value of Y or N to parameter: @use_file_table'
+		SELECT @return_code AS [return code], @error_message AS [error message]
+		RETURN
+	END
+
+IF @exclude_graph_tables NOT IN ('Y', 'N')
+	BEGIN
+		SET @error_message = 'Must provide a value of Y or N to parameter: @exclude_graph_tables'
+		SELECT @return_code AS [return code], @error_message AS [error message]
+		RETURN
+	END
+
 
 /* 
 	Determine list of tables to include in Export 
@@ -15384,8 +15431,27 @@ DECLARE @table_not_found_count AS INT
 /* get list of potential database tables to replicate */
 INSERT @include_tables
 SELECT [TABLE_SCHEMA], [TABLE_NAME]
-FROM INFORMATION_SCHEMA.TABLES
-WHERE [TABLE_TYPE] = 'BASE TABLE';
+  FROM INFORMATION_SCHEMA.TABLES
+ WHERE [TABLE_TYPE] = 'BASE TABLE'
+   AND '[' + [TABLE_SCHEMA] + '].[' + [TABLE_NAME] + ']' <> '[jtts].[json_repository]';
+
+/* option to remove 'graph' tables */
+IF @exclude_graph_tables = 'Y'
+	BEGIN
+		WITH [graph_tables] AS
+		(
+		SELECT SCHEMA_NAME([schema_id]) AS [TABLE_SCHEMA]  
+			 , [name] AS [TABLE_NAME]   
+		  FROM sys.tables st   
+		 WHERE ( st.is_edge = 1 OR st.is_node = 1 )
+		)
+		DELETE @include_tables
+		  FROM @include_tables i
+		  JOIN [graph_tables] g
+		    ON g.[TABLE_SCHEMA] = i.[TABLE_SCHEMA]
+		   AND g.[TABLE_NAME] = i.[TABLE_NAME]
+	END
+
 
 /* revise full @include_tables list based on @action and list in @tables parameter */
 IF NOT RTRIM(ISNULL(@tables, '')) = ''
@@ -15596,33 +15662,46 @@ SELECT @@SERVERNAME AS [server_name]
 FOR JSON PATH, INCLUDE_NULL_VALUES
 );
 
-
 SET @FileName = 'JTTS_Exp_' + REPLACE(REPLACE(CONVERT(VARCHAR, GETDATE(), 126), ':', '-'), '.', '-') + '_Label-' + @label + '.json'
 
-/* insert json file table */
-BEGIN TRY
-	INSERT INTO [FileTableDB].[dbo].[JTTS_Out] ( name, file_stream ) 
-	SELECT @FileName, CAST(@Json AS VARBINARY(MAX));
-END TRY
-BEGIN CATCH
-	SET @error_message = 'insert json file table: ' + ERROR_MESSAGE()
-	SELECT @return_code AS [return code], @error_message AS [error message]
-	RETURN
-END CATCH
+/* output json file */
+IF @use_file_table = 'Y'  /* save in file table */
+	BEGIN
+		BEGIN TRY
+			INSERT INTO [FileTableDB].[dbo].[JTTS_Out] ( name, file_stream ) 
+			SELECT @FileName, CAST(@Json AS VARBINARY(MAX));
+		END TRY
+		BEGIN CATCH
+			SET @error_message = 'insert json file table: ' + ERROR_MESSAGE()
+			SELECT @return_code AS [return code], @error_message AS [error message]
+			RETURN
+		END CATCH
 
-/* json #export_table clean-up */
-DROP TABLE #export_table
+		DROP TABLE #export_table
 
-SET @return_code = 0
-SET @error_message = ''
+		SET @return_code = 0
+		SET @error_message = ''
 
-PRINT 'Export Complete!'
+		SELECT @return_code AS [return code], @FileName AS [json file]
+	END
+ELSE			/* save in local table: [jtts].[json_repository] */
+	BEGIN
+		DELETE [jtts].[json_repository]
+		 WHERE [label] = @label
+		   AND [server_name] = @@SERVERNAME
+		   AND [database_name] = DB_NAME();
 
-SELECT @return_code AS [return code], @FileName AS [json file]
-
-
+		INSERT INTO [jtts].[json_repository]
+				   ([label]
+				   ,[server_name]
+				   ,[database_name]
+				   ,[label_notes]
+				   ,[json_file])
+			 VALUES
+				   (@label, @@SERVERNAME, DB_NAME(), @label_notes, CAST(@Json AS VARBINARY(MAX)))
+	END
 GO
-/****** Object:  StoredProcedure [jtts].[Json Table Import]    Script Date: 8/18/2018 10:04:52 AM ******/
+/****** Object:  StoredProcedure [jtts].[Json Table Import]    Script Date: 11/17/2018 3:40:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -15642,22 +15721,29 @@ GO
 -- Modify date: 09 Mar 2017 - Added check for aligned Json file
 -- Modify date: 15 Mar 2017 - Added SQL Platform and Product Version Check
 -- Modify date: 12 Jul 2017 - Changed 'Identity Insert' option to be determined by the 'destination' table definition
+-- Modify date: 16 Nov 2018 - Add option to insert Json from local table: [jtts].[json_repository]
 --
 -- Description:	Json Import of Database Table Set
 -- Sample Execute Command: 
 /*
 EXEC [jtts].[Json Table Import] 'JTTS_Exp_2017-03-09T10-37-41-540_Label-Exp_Test.json', 'N', 'N', 'Y'
 EXEC [jtts].[Json Table Import] 'JTTS_Exp_2017-02-23T11-17-27-247_Label-Metadata.json', 'N', 'N', 'Y', 'dbo.dim_column,dbo.dim_table,etl.dim_column,etl.dim_database,etl.dim_table,stg.dim_column,stg.dim_database'
+EXEC [jtts].[Json Table Import] 'JTTS_Exp_2017-03-09T10-37-41-540_Label-Exp_Test.json', 'N', 'N', 'Y'
+EXEC [jtts].[Json Table Import] '', 'Y', 'N', 'N', '', 'N', 'All_Projects', 'PC7', 'bimlsnap_v2'
 */
 -- ================================================================================================
 
 CREATE PROCEDURE [jtts].[Json Table Import]
 	(
-		 @FileName NVARCHAR(255)
+		 @FileName NVARCHAR(255) = N''
 	   , @DatabaseNameOverrideOption NVARCHAR(1) = N'N'
 	   , @IgnoreMissingDestinationTables NVARCHAR(1) = N'N'
 	   , @Use_JTTS_Out_Directory NVARCHAR(1) = N'N'
 	   , @tables NVARCHAR(MAX) = N''
+	   , @use_file_table NVARCHAR(1) = 'Y'
+	   , @load_label NVARCHAR(16) = ''
+	   , @load_server_name NVARCHAR(128) = ''
+	   , @load_database_name  NVARCHAR(128) = ''
 	)
 AS
 
@@ -15665,26 +15751,44 @@ AS
 DECLARE	@return_code AS INT = 1 /* error setting */
 	  , @error_message AS NVARCHAR(2000) = '<not set>';
 
-IF ( COALESCE( @FileName, '' ) = '' )
+DECLARE @load_create_datetime AS DATETIME
+	  , @load_label_notes AS NVARCHAR(3000)
+
+
+IF @use_file_table NOT IN ('Y', 'N')
 	BEGIN
-		SET @error_message = 'Must provide filename to Import.'
+		SET @error_message = 'Must provide a value of Y or N for parameter: @use_file_table'
 		SELECT @return_code AS [return code], @error_message AS [error message]
 		RETURN
 	END
 
-IF NOT EXISTS ( SELECT 1 FROM [FileTableDB].[dbo].[JTTS_In] WHERE [name] = @FileName ) AND @Use_JTTS_Out_Directory != 'Y'
+
+IF @use_file_table = 'Y'
 	BEGIN
-		SET @error_message = 'Import File Not Found in ''JTTS_In_Dir'' Folder: ' + @FileName
-		SELECT @return_code AS [return code], @error_message AS [error message]
-		RETURN
+
+		IF ( COALESCE( @FileName, '' ) = '' )
+			BEGIN
+				SET @error_message = 'Must provide filename to Import.'
+				SELECT @return_code AS [return code], @error_message AS [error message]
+				RETURN
+			END
+
+		IF NOT EXISTS ( SELECT 1 FROM [FileTableDB].[dbo].[JTTS_In] WHERE [name] = @FileName ) AND @Use_JTTS_Out_Directory != 'Y'
+			BEGIN
+				SET @error_message = 'Import File Not Found in ''JTTS_In_Dir'' Folder: ' + @FileName
+				SELECT @return_code AS [return code], @error_message AS [error message]
+				RETURN
+			END
+
+		IF NOT EXISTS ( SELECT 1 FROM [FileTableDB].[dbo].[JTTS_Out] WHERE [name] = @FileName ) AND @Use_JTTS_Out_Directory = 'Y'
+			BEGIN
+				SET @error_message = 'Import File Not Found in ''JTTS_Out_Dir'' Folder: ' + @FileName
+				SELECT @return_code AS [return code], @error_message AS [error message]
+				RETURN
+			END
+
 	END
 
-IF NOT EXISTS ( SELECT 1 FROM [FileTableDB].[dbo].[JTTS_Out] WHERE [name] = @FileName ) AND @Use_JTTS_Out_Directory = 'Y'
-	BEGIN
-		SET @error_message = 'Import File Not Found in ''JTTS_Out_Dir'' Folder: ' + @FileName
-		SELECT @return_code AS [return code], @error_message AS [error message]
-		RETURN
-	END
 
 IF CAST(SERVERPROPERTY('ProductVersion') AS NVARCHAR(64)) < '13.0.4001.0'
 	BEGIN
@@ -15692,6 +15796,33 @@ IF CAST(SERVERPROPERTY('ProductVersion') AS NVARCHAR(64)) < '13.0.4001.0'
 		SELECT @return_code AS [return code], @error_message AS [error message]
 		RETURN
 	END
+
+IF @use_file_table = 'N'
+	BEGIN
+
+		IF ISNULL(@load_label, '') = ''
+			BEGIN
+				SET @error_message = 'Must provide parameter: @load_label'
+				SELECT @return_code AS [return code], @error_message AS [error message]
+				RETURN
+			END
+
+		IF ISNULL(@load_server_name, '') = ''
+			BEGIN
+				SET @error_message = 'Must provide parameter: @load_server_name'
+				SELECT @return_code AS [return code], @error_message AS [error message]
+				RETURN
+			END
+
+		IF ISNULL(@load_database_name, '') = ''
+			BEGIN
+				SET @error_message = 'Must provide parameter: @load_database_name'
+				SELECT @return_code AS [return code], @error_message AS [error message]
+				RETURN
+			END
+
+	END
+
 
 /* 
 	Determine list of tables to include in Import 
@@ -15782,10 +15913,25 @@ DECLARE @ServerName NVARCHAR(255)
 	  , @BegTime DATETIME
 	  , @EndTime DATETIME;
 
-IF @Use_JTTS_Out_Directory = 'Y'
-	SELECT @RowJson = CAST([file_stream] AS NVARCHAR(MAX)) FROM [FileTableDB].[dbo].[JTTS_Out] WHERE [name] = @FileName
+/* load json file */
+IF @use_file_table = 'Y'  /* load from file table */
+	BEGIN
+		IF @Use_JTTS_Out_Directory = 'Y'
+			SELECT @RowJson = CAST([file_stream] AS NVARCHAR(MAX)) FROM [FileTableDB].[dbo].[JTTS_Out] WHERE [name] = @FileName
+		ELSE
+			SELECT @RowJson = CAST([file_stream] AS NVARCHAR(MAX)) FROM [FileTableDB].[dbo].[JTTS_In] WHERE [name] = @FileName
+	END
 ELSE
-	SELECT @RowJson = CAST([file_stream] AS NVARCHAR(MAX)) FROM [FileTableDB].[dbo].[JTTS_In] WHERE [name] = @FileName;
+	BEGIN
+		SELECT @load_create_datetime = [create_datetime]
+			 , @load_label_notes = [label_notes]
+			 , @RowJson = CAST([json_file] AS NVARCHAR(MAX))
+		  FROM [jtts].[json_repository]
+		 WHERE [label] = @load_label
+		   AND [server_name] = @load_server_name
+		   AND [database_name] = @load_database_name
+	END
+
 
 SELECT @sql_platform = [sql_platform]
 	 , @product_version = [product_version]
@@ -15964,6 +16110,7 @@ DECLARE MY_CURSOR CURSOR LOCAL STATIC READ_ONLY FORWARD_ONLY
 		SELECT * 
 		  FROM [result schema];
 
+
 	/* determine if identity insert is needed */
 	--SELECT @IdentityInsertColumnSum = SUM(CAST([is_identity_column] AS INT)) FROM @tableMetadata
 
@@ -16069,7 +16216,7 @@ DROP TABLE #import_table;
 
 PRINT 'Import Complete!'
 
-SELECT @return_code AS [return code], @error_message AS [error message]
+SELECT @return_code AS [return code], @error_message AS [error message];
 GO
 
 
