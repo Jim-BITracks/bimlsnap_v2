@@ -15342,6 +15342,7 @@ GO
 -- Modify date: 20 Mar 2017 - Changed @label to be optional paramater (replaced by partial guid) 
 -- Modify date: 16 Nov 2018 - Added option to send output to table: [jtts].[json_repository]
 -- Modify date: 16 Nov 2018 - Added option to exclude graph tables ('node' and 'edge') 
+-- Modify date: 19 Nov 2018 - Added auto-create for table: [jtts].[json_repository]
 --
 -- Description:	Json Export of Database Tables
 --
@@ -15354,6 +15355,7 @@ EXEC [jtts].[Json Table Export] 'All_Projects', 'all', '', 'Y', 'N', 'Use for bi
 */
 --
 -- ========================================================================================================================================
+
 
 CREATE PROCEDURE [jtts].[Json Table Export]
 (
@@ -15661,6 +15663,36 @@ SELECT @@SERVERNAME AS [server_name]
 	 , @ResultSet AS [combined_result_set]
 FOR JSON PATH, INCLUDE_NULL_VALUES
 );
+
+-- be sure table: [jtts].[json_repository] exists
+
+DECLARE @table_create_sql NVARCHAR(MAX)
+SET @table_create_sql = '
+	SET ANSI_NULLS ON;
+	SET QUOTED_IDENTIFIER ON;
+
+	CREATE TABLE [jtts].[json_repository](
+		[label] [nvarchar](16) NOT NULL,
+		[server_name] [nvarchar](128) NOT NULL,
+		[database_name] [nvarchar](128) NOT NULL,
+		[create_datetime] [datetime] NOT NULL,
+		[label_notes] [nvarchar](3000) NULL,
+		[json_file] [varbinary](max) NOT NULL,
+	 CONSTRAINT [PK jtts json_repository] PRIMARY KEY CLUSTERED 
+	(
+		[label] ASC,
+		[server_name] ASC,
+		[database_name] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+
+	ALTER TABLE [jtts].[json_repository] ADD  CONSTRAINT [jtts json_repository create_datetime default]  DEFAULT (getdate()) FOR [create_datetime];
+	'
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[jtts].[json_repository]') AND type in (N'U'))
+  BEGIN
+	EXECUTE sp_executesql @table_create_sql;
+  END
+
 
 SET @FileName = 'JTTS_Exp_' + REPLACE(REPLACE(CONVERT(VARCHAR, GETDATE(), 126), ':', '-'), '.', '-') + '_Label-' + @label + '.json'
 
