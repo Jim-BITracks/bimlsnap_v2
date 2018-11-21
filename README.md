@@ -9,3 +9,6 @@
 7. Open the SSIS Project: "Metadata Refresh v2", verify the parameters settings (the server values all default to 'localhost), and execute the "Run All..." package. This first run will populate only the 'database' metadata table
 8. Open the "Metadata Manager" from the Front-end program, connect to the 'bimlsnap_mart_v2' database, click on the "Database Selection" tab, and place a 'Y' under the "Extract Metadata (Y/N)" column for all databases which you would like to collect metadata.
 9. Re-run the SSIS Project: "Metadata Refresh v2" to extract 'table', and 'column' metadata from the databases selected in step 8. It's a good practice to run this Metadata Refresh project whenever your database DDL (table and column definitions) change.
+
+Additional Item:
+THe SSIS Project called: "Transfer Json Repository Row" can be used in conjunction with the Blog Entry: https://bitracks.wordpress.com/2018/11/21/using-json-for-table-data-movement-in-sql-server/
