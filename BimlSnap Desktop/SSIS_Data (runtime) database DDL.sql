@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) 2018, BI Tracks Consulting, LLC
+Copyright (c) 2019, BI Tracks Consulting, LLC
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -30,16 +30,68 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-
 USE [master]
 GO
 
 CREATE DATABASE [SSIS_Data];
 GO
 
+
 USE [SSIS_Data]
 GO
-/****** Object:  Table [dbo].[change_tracking_last_sync]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[get_last_sync_number]    Script Date: 5/11/2019 10:12:41 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+-- ================================================================================================
+-- Author:		Jim Miller (BITracks Consulting, LLC)
+-- Create date: 03 Dec 2018
+-- Modify date: 
+--
+-- Description:	Returns the last completed sync (version) number for CT tracked database
+--
+-- Sample Execute Command: 
+/*	
+PRINT [dbo].[get_last_sync_number]
+	 (
+	    'PC1'		-- @src_server_name 
+	  , 'PC1'		-- @dst_server_name  
+	  , 'landing_zone'	-- @src_database_name 
+	  , 'ODS'	        -- @dst_database_name  
+	 )
+*/
+-- ================================================================================================
+
+CREATE FUNCTION [dbo].[get_last_sync_number]
+(
+	    @src_server_name NVARCHAR(128) = 'DDP_LZ_DEV'
+	  , @dst_server_name NVARCHAR(128) = 'DDP_ODS_DEV'
+	  , @src_database_name NVARCHAR(128) = 'DDP_LZ_DEV'
+	  , @dst_database_name NVARCHAR(128) = 'DDP_ODS_DEV'
+)
+RETURNS BIGINT
+AS
+BEGIN
+   
+RETURN   
+(  
+	SELECT [last_sync_version]
+	  FROM [dbo].[change_tracking_last_sync] sync
+	 WHERE [src_server_name] = @src_server_name
+	   AND [src_database_name] = @src_database_name
+	   AND [dst_server_name] = @dst_server_name
+	   AND [dst_database_name] = @dst_database_name
+);  
+
+END
+
+GO
+/****** Object:  Table [dbo].[change_tracking_last_sync]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -61,7 +113,7 @@ CREATE TABLE [dbo].[change_tracking_last_sync](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [dbo].[get_last_ct_version]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[get_last_ct_version]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -99,7 +151,7 @@ RETURN
 
 
 GO
-/****** Object:  Table [dbo].[change_tracking_sync_log]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  Table [dbo].[change_tracking_sync_log]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,7 +174,7 @@ CREATE TABLE [dbo].[change_tracking_sync_log](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  UserDefinedFunction [dbo].[get_next_ct_version]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[get_next_ct_version]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -167,7 +219,7 @@ RETURN
 
 
 GO
-/****** Object:  Table [dbo].[SSIS_batch_log]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  Table [dbo].[SSIS_batch_log]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -186,7 +238,7 @@ CREATE TABLE [dbo].[SSIS_batch_log](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SSIS_error_log]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  Table [dbo].[SSIS_error_log]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +258,7 @@ CREATE TABLE [dbo].[SSIS_error_log](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SSIS_execution_log]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  Table [dbo].[SSIS_execution_log]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -229,7 +281,7 @@ CREATE TABLE [dbo].[SSIS_execution_log](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SSIS_execution_log_history]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  Table [dbo].[SSIS_execution_log_history]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -250,7 +302,7 @@ CREATE TABLE [dbo].[SSIS_execution_log_history](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SSIS_runtime_values]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  Table [dbo].[SSIS_runtime_values]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -271,7 +323,7 @@ CREATE TABLE [dbo].[SSIS_runtime_values](
 GO
 ALTER TABLE [dbo].[change_tracking_sync_log] ADD  CONSTRAINT [DF - change_tracking_sync_log - next_sync_start]  DEFAULT (getdate()) FOR [next_sync_start]
 GO
-/****** Object:  StoredProcedure [dbo].[BimlSnap - Metadata Refresh v2]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[BimlSnap - Metadata Refresh v2]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -333,7 +385,74 @@ EXEC [SSISDB].[catalog].[set_execution_parameter_value] @execution_id,  @object_
 EXEC [SSISDB].[catalog].[start_execution] @execution_id
 
 GO
-/****** Object:  StoredProcedure [dbo].[Log Error]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[Job Complete Wait Routine]    Script Date: 5/11/2019 10:12:41 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[Job Complete Wait Routine] 
+	  @max_wait_minutes INT
+	, @job_name VARCHAR(50)
+AS
+-- ================================================================================================
+-- Author:		Jim Miller
+-- Create date: 26 Sep 2016
+-- Modify date: 
+-- Description:	Wait routine for job to complete
+--
+--
+/* examples
+EXEC [dbo].[Job Complete Wait Routine] 240, 'Run All - snap_build Replication.dtsx'
+*/
+
+-- ================================================================================================
+
+DECLARE @routine_start DATETIME
+    SET @routine_start = GETDATE()
+
+DECLARE @row_count INT = -1
+
+WHILE 1=1
+BEGIN
+	SELECT @row_count=COUNT(*) 
+	  FROM SSISDB.catalog.executions 
+	 WHERE STATUS = 2 -- running
+	   AND [package_name] = @job_name
+
+	IF @row_count = 0
+		BREAK
+
+	IF GETDATE() > DATEADD(MINUTE, @max_wait_minutes, @routine_start)
+		BREAK
+
+	WAITFOR DELAY '00:00:10';
+END
+
+IF @row_count != 0
+
+	INSERT [dbo].[SSIS_error_log]
+		 ( [log_time]
+		 , [sequence_number]
+		 , [package_name]
+		 , [error_number]
+		 , [error_description]
+		 , [package_id]
+		 , [server_execution_id])
+		 VALUES
+		( GETDATE()
+		, 0
+		, 'SP: [dbo].[Job Complete Wait Routine]'
+		, 0
+		, 'Timeout waiting for Job to complete: ' + @job_name
+		, 'n/a'
+		, 'n/a'
+		)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[Log Error]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -383,7 +502,7 @@ INSERT [dbo].[SSIS_error_log]
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Log Package Complete]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[Log Package Complete]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -466,7 +585,7 @@ ELSE
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Log Project Complete]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[Log Project Complete]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -570,7 +689,7 @@ DELETE [dbo].[SSIS_execution_log]
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Prior Run Cleanup]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[Prior Run Cleanup]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -672,7 +791,7 @@ DELETE [dbo].[SSIS_execution_log]
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Put Value]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[Put Value]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -710,7 +829,7 @@ VALUES
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Run Package Check]    Script Date: 4/28/2018 5:04:01 PM ******/
+/****** Object:  StoredProcedure [dbo].[Run Package Check]    Script Date: 5/11/2019 10:12:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -779,5 +898,81 @@ ELSE
 
 
 
+GO
+/****** Object:  StoredProcedure [dbo].[Update Change Tracking Last Sync]    Script Date: 5/11/2019 10:12:41 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- ================================================================================================
+-- Author:  Jim Miller (BI Tracks Consulting, LLC)
+-- Create date: 30 Nov 2018
+-- Modify date: 
+--
+-- Description:	Update (or insert to initialize) the Change Tracking Last Sync
+--
+-- Sample Execute Command: 
+/* 
+EXEC [dbo].[Update Change Tracking Last Sync] 'src_server', 'src_database', 'dst_server', 'dst_database'
+*/
+-- ================================================================================================
+
+CREATE PROCEDURE [dbo].[Update Change Tracking Last Sync] 
+	   @src_server_name NVARCHAR(128)
+	 , @src_database_name NVARCHAR(128)
+	 , @dst_server_name NVARCHAR(128)
+	 , @dst_database_name NVARCHAR(128)
+
+AS
+
+DECLARE @next_sync_version BIGINT
+      , @next_sync_start DATETIME
+      , @row_count INT;
+ 
+ SELECT @next_sync_version = [next_sync_version] 
+   , @next_sync_start = [next_sync_start]
+   FROM [dbo].[get_next_ct_version] (@src_server_name, @src_database_name, @dst_server_name, @dst_database_name)
+
+ UPDATE [dbo].[change_tracking_last_sync]
+ SET [last_sync_version]  = @next_sync_version
+   , [last_sync_start]    = @next_sync_start
+   , [last_sync_complete] = GETDATE()
+  WHERE [src_server_name]   = @src_server_name
+ AND [src_database_name] = @src_database_name
+ AND [dst_server_name]   = @dst_server_name
+ AND [dst_database_name] = @dst_database_name
+
+ SET @row_count = @@ROWCOUNT
+
+ IF @row_count = 0
+ BEGIN
+  INSERT [dbo].[change_tracking_last_sync]
+    ( [src_server_name]
+    , [src_database_name]
+    , [dst_server_name]
+    , [dst_database_name]
+    , [last_sync_version]
+    , [last_sync_start]
+    , [last_sync_complete] )
+  VALUES 
+    ( @src_server_name
+    , @src_database_name
+    , @dst_server_name
+    , @dst_database_name
+    , @next_sync_version
+    , @next_sync_start
+    , GETDATE()
+    );
+  SET @row_count = @@ROWCOUNT;
+ END
+
+-- auto clean-up
+DELETE [dbo].[change_tracking_sync_log]
+ WHERE CAST([next_sync_start] AS DATE) < GETDATE()-7; 
+
+SET @row_count = @row_count + @@ROWCOUNT;
+
+SELECT @row_count AS [row_count]
 GO
 
